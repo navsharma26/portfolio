@@ -19,44 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
    1. THEME SWITCHER
    -------------------------------------------------------------------------- */
 function initTheme() {
-  const themeBtn = document.getElementById('theme-btn');
-  const themeMenu = document.getElementById('theme-menu');
-  const themeOptions = document.querySelectorAll('.theme-opt');
-  const savedTheme = localStorage.getItem('navneet_theme') || 'violet';
+  const toggleBtn = document.getElementById('theme-toggle-btn');
+  const savedTheme = localStorage.getItem('navneet_theme') || 'dark';
 
   applyTheme(savedTheme);
 
-  if (themeBtn && themeMenu) {
-    themeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      themeMenu.classList.toggle('show');
-    });
-
-    document.addEventListener('click', () => {
-      themeMenu.classList.remove('show');
-    });
-
-    themeOptions.forEach(opt => {
-      opt.addEventListener('click', () => {
-        const color = opt.getAttribute('data-color');
-        applyTheme(color);
-        localStorage.setItem('navneet_theme', color);
-        themeMenu.classList.remove('show');
-        showToast(`Theme switched to ${color.toUpperCase()}`);
-      });
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('navneet_theme', next);
+      showToast(`Switched to ${next === 'dark' ? 'Dark' : 'Light'} theme`);
     });
   }
 }
 
-function applyTheme(color) {
-  document.documentElement.setAttribute('data-theme', color);
-  document.querySelectorAll('.theme-opt').forEach(opt => {
-    if (opt.getAttribute('data-color') === color) {
-      opt.classList.add('active');
-    } else {
-      opt.classList.remove('active');
-    }
-  });
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
 }
 
 /* --------------------------------------------------------------------------
@@ -625,7 +605,7 @@ function initTerminal() {
         • <span class="term-highlight">certs</span> - List verified Coursera, Google & AWS credentials<br>
         • <span class="term-highlight">stats</span> - Summary of GitHub, LeetCode, and academic metrics<br>
         • <span class="term-highlight">contact</span> - Phone, email, location, and social links<br>
-        • <span class="term-highlight">theme &lt;violet|cyan|emerald|amber&gt;</span> - Change site theme accent<br>
+        • <span class="term-highlight">theme &lt;dark|light&gt;</span> - Toggle dark or light theme<br>
         • <span class="term-highlight">sudo hire-me</span> - Unlock offer generation contract 😉<br>
         • <span class="term-highlight">date</span> - Print current timestamp<br>
         • <span class="term-highlight">clear</span> - Clear the terminal screen
@@ -682,8 +662,9 @@ function initTerminal() {
     contact: () => `
       <div class="term-response">
         <span class="term-cyan">Direct Contact Channels:</span><br>
-        • <strong>Email:</strong> <a href="mailto:navneet30405@gmail.com" class="term-cmd-sample">navneet30405@gmail.com</a><br>
+        • <strong>Email:</strong> <a href="mailto:navsharma30405@gmail.com" class="term-cmd-sample">navsharma30405@gmail.com</a><br>
         • <strong>Phone:</strong> <a href="tel:+916206529544" class="term-cmd-sample">+91-6206529544</a><br>
+        • <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/navsharma26" target="_blank" class="term-cmd-sample">linkedin.com/in/navsharma26</a><br>
         • <strong>GitHub:</strong> <a href="https://github.com/navsharma26" target="_blank" class="term-cmd-sample">github.com/navsharma26</a><br>
         • <strong>Location:</strong> Bhopal, MP, India
       </div>
@@ -693,9 +674,9 @@ function initTerminal() {
         <span class="term-cyan">Verified Credentials:</span><br>
         • MP Online Intern Certificate (Gov of MP)<br>
         • Google IT Support Professional Certificate (Coursera)<br>
-        • AWS Cloud Technical Essentials (AWS / Coursera)<br>
-        • The Bits and Bytes of Computer Networking (Google / Coursera)<br>
-        • Cisco Networking Basics (Cisco Networking Academy)
+        • AWS Cloud Technical Essentials (Intellipaat Academy)<br>
+        • The Bits and Bytes of Networking (Google)<br>
+        • Programming in Java (Vidyarthi)
       </div>
     `,
     stats: () => `
@@ -713,11 +694,11 @@ function initTerminal() {
       </div>
     `,
     "sudo hire-me": () => `
-      <div class="term-response" style="color: #34d399;">
+      <div class="term-response" style="color: var(--color-green);">
         [SUCCESS] 🚀 Access Granted! Preparing Offer Package...<br>
         Candidate: Navneet Sharma<br>
         Skills Match: 100% (Backend, Distributed Systems, High Concurrency)<br>
-        Next Step: Email <a href="mailto:navneet30405@gmail.com" style="color: #6ee7b7; text-decoration: underline;">navneet30405@gmail.com</a> to schedule technical interview!
+        Next Step: Email <a href="mailto:navsharma30405@gmail.com" style="color: var(--color-green); text-decoration: underline;">navsharma30405@gmail.com</a> to schedule technical interview!
       </div>
     `
   };
@@ -745,18 +726,18 @@ function initTerminal() {
     // Theme command
     if (lower.startsWith('theme ')) {
       const targetTheme = lower.split(' ')[1];
-      if (['violet', 'cyan', 'emerald', 'amber'].includes(targetTheme)) {
+      if (['dark', 'light'].includes(targetTheme)) {
         applyTheme(targetTheme);
         localStorage.setItem('navneet_theme', targetTheme);
         const resp = document.createElement('div');
         resp.className = 'term-line';
-        resp.innerHTML = `<div class="term-response" style="color:#34d399;">Theme changed to <strong>${targetTheme.toUpperCase()}</strong></div>`;
+        resp.innerHTML = `<div class="term-response" style="color:var(--color-green);">Theme changed to <strong>${targetTheme.toUpperCase()}</strong></div>`;
         output.appendChild(resp);
         showToast(`Theme switched to ${targetTheme.toUpperCase()}`);
       } else {
         const resp = document.createElement('div');
         resp.className = 'term-line';
-        resp.innerHTML = `<div class="term-response" style="color:#ef4444;">Invalid theme. Choose: violet, cyan, emerald, amber</div>`;
+        resp.innerHTML = `<div class="term-response" style="color:var(--color-red);">Invalid theme. Choose: dark or light</div>`;
         output.appendChild(resp);
       }
       terminalBody.scrollTop = terminalBody.scrollHeight;
@@ -984,7 +965,7 @@ function initContactForm() {
       submitBtn.innerHTML = `Message Sent!`;
 
       // Trigger mailto link with encoded parameters
-      const mailtoUrl = `mailto:navneet30405@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('Hi Navneet,\n\n' + message + '\n\nBest,\n' + name + '\nEmail: ' + email)}`;
+      const mailtoUrl = `mailto:navsharma30405@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('Hi Navneet,\n\n' + message + '\n\nBest,\n' + name + '\nEmail: ' + email)}`;
       window.location.href = mailtoUrl;
 
       showToast("Message client opened! Navneet will reply promptly.");

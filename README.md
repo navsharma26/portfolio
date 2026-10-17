@@ -17,8 +17,8 @@ This is a developer portfolio built for **Navneet Sharma**, showcasing productio
 - **Project Filter & Instant Search:** Filter between *Systems & Storage*, *Full-Stack & Real-Time*, and *AI, Analytics & Cloud*. Real-time search by technology tags (e.g. `Go`, `Redis`, `WebRTC`, `FastAPI`).
 - **Architecture Deep Dive Modals:** Clickable architectural breakdown for projects (WiscKey key-value separation, Bloom filters, BullMQ async workers, ACID transactions).
 - **Embedded Resume Preview & Download:** One-click modal preview and direct PDF download of Navneet's official resume.
-- **Theme Color Engine:** Custom accent theme switcher (Cyber Violet, Electric Cyan, Emerald City, Solar Amber) with localStorage persistence.
-- **Direct Contact & Copy System:** One-click copy for email and phone with animated toast confirmations, plus prefilled direct email client launch.
+- **Theme Engine:** Clean Dark / Light mode toggle inspired by the minimalist aesthetic of `vishalbhutekar.netlify.app` with persistent `localStorage`.
+- **Direct Contact & Copy System:** One-click copy for email (`navsharma30405@gmail.com`) and phone with animated toast confirmations, plus prefilled direct email client launch.
 
 ---
 

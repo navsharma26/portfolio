@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="violet">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,20 +15,16 @@
   <meta property="og:image" content="assets/avatar.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%238b5cf6'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='48' fill='white'>NS</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%231a1a18'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='48' fill='%23fafaf9'>NS</text></svg>">
 
-  <!-- Google Fonts: Inter, Outfit, JetBrains Mono -->
+  <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Ambient background glow & grid -->
-  <div class="ambient-glow glow-1"></div>
-  <div class="ambient-glow glow-2"></div>
-  <div class="ambient-glow glow-3"></div>
   <div class="cyber-grid"></div>
 
   <!-- Navigation -->
@@ -57,28 +53,23 @@
       </nav>
 
       <div class="nav-actions">
-        <!-- Theme Selector -->
-        <div class="theme-dropdown">
-          <button class="theme-btn" id="theme-btn" aria-label="Toggle theme color" title="Theme Accents">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-          </button>
-          <div class="theme-menu" id="theme-menu">
-            <button class="theme-opt active" data-color="violet"><span class="dot violet"></span> Violet</button>
-            <button class="theme-opt" data-color="cyan"><span class="dot cyan"></span> Cyan</button>
-            <button class="theme-opt" data-color="emerald"><span class="dot emerald"></span> Emerald</button>
-            <button class="theme-opt" data-color="amber"><span class="dot amber"></span> Amber</button>
-          </div>
-        </div>
+        <!-- Theme Toggle Button (Light / Dark switch) -->
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle Theme">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
 
         <!-- Resume Button -->
         <a href="#resume-modal" class="btn btn-sm btn-outline resume-trigger-btn" id="resume-nav-btn">
@@ -180,14 +171,20 @@
               <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
               </svg>
-              <span>GitHub / navsharma26</span>
+              <span>GitHub</span>
             </a>
-            <a href="mailto:navneet30405@gmail.com" class="social-chip" title="Send Email">
+            <a href="https://linkedin.com/in/navsharma26" target="_blank" rel="noopener noreferrer" class="social-chip" title="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="mailto:navsharma30405@gmail.com" class="social-chip" title="Send Email">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="social-icon">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              <span>navneet30405@gmail.com</span>
+              <span>navsharma30405@gmail.com</span>
             </a>
             <a href="tel:+916206529544" class="social-chip" title="Call">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="social-icon">
@@ -677,35 +674,44 @@
             <div class="cert-badge">AWS</div>
             <div class="cert-icon">☁️</div>
             <h3 class="cert-name">AWS Cloud Technical Essentials</h3>
-            <span class="cert-issuer">Amazon Web Services (AWS) • Coursera</span>
+            <span class="cert-issuer">AWS • Intellipaat Academy</span>
             <p class="cert-desc">Foundational AWS services, compute (EC2), storage (S3), database architecture, security, and cloud scalability.</p>
           </div>
 
           <!-- Cert 4 -->
           <div class="cert-card">
-            <div class="cert-badge">Networking</div>
+            <div class="cert-badge">Google</div>
             <div class="cert-icon">🌐</div>
-            <h3 class="cert-name">The Bits and Bytes of Computer Networking</h3>
-            <span class="cert-issuer">Google • Coursera</span>
+            <h3 class="cert-name">The Bits and Bytes of Networking</h3>
+            <span class="cert-issuer">Google</span>
             <p class="cert-desc">TCP/IP model, DNS resolution, subnetting, network layer routing protocols, and client-server architecture.</p>
           </div>
 
           <!-- Cert 5 -->
           <div class="cert-card">
-            <div class="cert-badge">Cisco</div>
-            <div class="cert-icon">🔌</div>
-            <h3 class="cert-name">Cisco Networking Basics</h3>
-            <span class="cert-issuer">Cisco Networking Academy</span>
-            <p class="cert-desc">Network hardware components, switches, routers, packet delivery, and secure local area network topologies.</p>
+            <div class="cert-badge">Java</div>
+            <div class="cert-icon">☕</div>
+            <h3 class="cert-name">Programming in Java</h3>
+            <span class="cert-issuer">Vidyarthi</span>
+            <p class="cert-desc">Core Java concepts, object-oriented principles, multithreading, collections framework, and JVM memory model.</p>
           </div>
 
-          <!-- Cert 6: LeetCode Achievement -->
+          <!-- Achievement 1 -->
+          <div class="cert-card highlight-cert">
+            <div class="cert-badge highlight">DevOps &amp; Cloud</div>
+            <div class="cert-icon">🚀</div>
+            <h3 class="cert-name">Infrastructure &amp; Reliability</h3>
+            <span class="cert-issuer">Docker &amp; Multi-Cloud CI/CD</span>
+            <p class="cert-desc">Configured reproducible Docker runtime environments, automated CI/CD deployments across multi-cloud platforms, achieved 99.9% pipeline availability.</p>
+          </div>
+
+          <!-- Achievement 2 -->
           <div class="cert-card highlight-cert">
             <div class="cert-badge highlight">Competitive Coding</div>
             <div class="cert-icon">🏆</div>
             <h3 class="cert-name">200+ LeetCode DSA Solutions</h3>
-            <span class="cert-issuer">LeetCode &amp; Codeforces Contestant</span>
-            <p class="cert-desc">Deep mastery in Dynamic Programming, Graph Theory, Binary Trees, Backtracking, and Greedy Algorithms.</p>
+            <span class="cert-issuer">LeetCode &amp; Contestant</span>
+            <p class="cert-desc">Deep algorithmic mastery in Dynamic Programming, Graph Theory, Binary Trees, Backtracking, and weekly contests.</p>
           </div>
         </div>
       </div>
@@ -742,9 +748,9 @@
                 </div>
                 <div class="method-content">
                   <span class="method-label">Email</span>
-                  <a href="mailto:navneet30405@gmail.com" class="method-value">navneet30405@gmail.com</a>
+                  <a href="mailto:navsharma30405@gmail.com" class="method-value">navsharma30405@gmail.com</a>
                 </div>
-                <button class="copy-btn" data-copy="navneet30405@gmail.com" title="Copy Email">
+                <button class="copy-btn" data-copy="navsharma30405@gmail.com" title="Copy Email">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -782,6 +788,19 @@
                 <div class="method-content">
                   <span class="method-label">Location</span>
                   <span class="method-value">Bhopal, Madhya Pradesh, India (Willing to relocate)</span>
+                </div>
+              </div>
+
+              <!-- LinkedIn Card -->
+              <div class="method-card">
+                <div class="method-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="method-icon">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                </div>
+                <div class="method-content">
+                  <span class="method-label">LinkedIn</span>
+                  <a href="https://linkedin.com/in/navsharma26" target="_blank" class="method-value">linkedin.com/in/navsharma26</a>
                 </div>
               </div>
 
@@ -846,14 +865,15 @@
     <div class="container footer-container">
       <div class="footer-left">
         <span class="footer-brand">Navneet Sharma</span>
-        <p class="footer-copy">&copy; 2026 Navneet Sharma. Crafted with Vanilla CSS &amp; Clean Architecture.</p>
+        <p class="footer-copy">&copy; 2026 Navneet Sharma. Clean, Minimalist &amp; Modern Architecture.</p>
       </div>
 
       <div class="footer-links">
         <a href="#hero">Back to Top &uarr;</a>
         <a href="https://github.com/navsharma26" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/navsharma26" target="_blank">LinkedIn</a>
         <a href="resume.pdf" download="Navneet_Sharma_Resume.pdf">Resume</a>
-        <a href="mailto:navneet30405@gmail.com">Email</a>
+        <a href="mailto:navsharma30405@gmail.com">Email</a>
       </div>
     </div>
   </footer>
