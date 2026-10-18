@@ -664,7 +664,7 @@ function initTerminal() {
         <span class="term-cyan">Direct Contact Channels:</span><br>
         • <strong>Email:</strong> <a href="mailto:navsharma30405@gmail.com" class="term-cmd-sample">navsharma30405@gmail.com</a><br>
         • <strong>Phone:</strong> <a href="tel:+916206529544" class="term-cmd-sample">+91-6206529544</a><br>
-        • <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/navsharma26" target="_blank" class="term-cmd-sample">linkedin.com/in/navsharma26</a><br>
+        • <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/navneet-sharma-81531728a" target="_blank" class="term-cmd-sample">linkedin.com/in/navneet-sharma-81531728a</a><br>
         • <strong>GitHub:</strong> <a href="https://github.com/navsharma26" target="_blank" class="term-cmd-sample">github.com/navsharma26</a><br>
         • <strong>Location:</strong> Bhopal, MP, India
       </div>
